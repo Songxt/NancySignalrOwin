@@ -9,8 +9,7 @@ There are 4 projects:
  
   - PackageExamples.csproj demonstrates various Owin.* and Microsoft.Owin.* packages in various Startup configurations. Also contains some sample tests
 
-  - NancySignalrRaven.csproj is an example application that combines.. Nancy, SignalrR and RavenDB as well as various middleware and dependency injection.
-Dillinger is a cloud-enabled HTML5 Markdown editor.
+  - NancySignalrRaven.csproj is an example application that combines... you guessed it... Nancy, SignalrR and RavenDB, as well as various middleware and dependency injection.
 
 Using NancySignalrRaven App
 -
