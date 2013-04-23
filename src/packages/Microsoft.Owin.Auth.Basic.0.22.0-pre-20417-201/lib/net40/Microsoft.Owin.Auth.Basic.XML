@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Owin.Auth.Basic</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Owin.Auth.Basic.BasicAuthMiddleware">
+            <summary>
+            This middleware parses Authorization header for Basic authentication, and invokes a
+            user provided callback to validate the username and password.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Auth.Basic.BasicAuthMiddleware.#ctor(System.Func{System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.Tasks.Task},Microsoft.Owin.Auth.Basic.BasicAuthOptions)">
+            <summary>
+            
+            </summary>
+            <param name="nextApp"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:Microsoft.Owin.Auth.Basic.BasicAuthMiddleware.Invoke(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            
+            </summary>
+            <param name="environment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Owin.BasicAuthExtensions">
+            <summary>
+            Extension methods for the BasicAuthMiddleware
+            </summary>
+        </member>
+        <member name="M:Owin.BasicAuthExtensions.UseBasicAuth(Owin.IAppBuilder,Microsoft.Owin.Auth.Basic.BasicAuthOptions)">
+            <summary>
+            Enable Basic authentication
+            </summary>
+            <param name="builder"></param>
+            <param name="options">Authentication options</param>
+            <returns></returns>
+        </member>
+        <member name="M:Owin.BasicAuthExtensions.UseBasicAuth(Owin.IAppBuilder,System.Func{System.String,System.String,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Enable Basic authentication
+            </summary>
+            <param name="builder"></param>
+            <param name="authenticate">The user validation callback</param>
+            <returns></returns>
+        </member>
+        <member name="M:Owin.BasicAuthExtensions.UseBasicAuth(Owin.IAppBuilder,System.Func{System.String,System.String,System.Threading.Tasks.Task{System.Boolean}},System.Action{Microsoft.Owin.Auth.Basic.BasicAuthOptions})">
+            <summary>
+            Enable Basic authentication
+            </summary>
+            <param name="builder"></param>
+            <param name="authenticate">The user validation callback</param>
+            <param name="config">Other authentication options</param>
+            <returns></returns>
+        </member>
+        <member name="M:Owin.BasicAuthExtensions.UseBasicAuth(Owin.IAppBuilder,System.Func{System.Collections.Generic.IDictionary{System.String,System.Object},System.String,System.String,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Enable Basic authentication
+            </summary>
+            <param name="builder"></param>
+            <param name="authenticate">The user validation callback</param>
+            <returns></returns>
+        </member>
+        <member name="M:Owin.BasicAuthExtensions.UseBasicAuth(Owin.IAppBuilder,System.Func{System.Collections.Generic.IDictionary{System.String,System.Object},System.String,System.String,System.Threading.Tasks.Task{System.Boolean}},System.Action{Microsoft.Owin.Auth.Basic.BasicAuthOptions})">
+            <summary>
+            Enable Basic authentication
+            </summary>
+            <param name="builder"></param>
+            <param name="authenticate">The user validation callback</param>
+            <param name="config">Other authentication options</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Owin.Auth.Basic.BasicAuthOptions">
+            <summary>
+            Authentication options for the BasicAuthMiddleware
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Auth.Basic.BasicAuthOptions.#ctor(System.Func{System.Collections.Generic.IDictionary{System.String,System.Object},System.String,System.String,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <param name="callback">The user validation callback</param>
+        </member>
+        <member name="P:Microsoft.Owin.Auth.Basic.BasicAuthOptions.Realm">
+            <summary>
+            The Realm to append to the WWW-Authenticate challenge, if any
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Auth.Basic.BasicAuthOptions.RequireEncryption">
+            <summary>
+            If enabled, this prevents request from performing Basic authentication over HTTP.  Only HTTPS will be allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Auth.Basic.BasicAuthOptions.Authenticate">
+            <summary>
+            The user validation callback
+            </summary>
+        </member>
+    </members>
+</doc>

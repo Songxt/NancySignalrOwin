@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Owin.Compression</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Owin.Compression.Storage.CompressedKey.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+    </members>
+</doc>
