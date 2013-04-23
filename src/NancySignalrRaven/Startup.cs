@@ -37,7 +37,7 @@ namespace SampleApp
                             .UseBasicAuth((user, pass) => Task.FromResult(pass == "damo"))
                             .UseDenyAnonymous()
                             .UseDirectoryBrowser(@"c:\"))
-                .MapPath("/scripts", siteBuilder => siteBuilder.UseFileServer("scripts"))
+                .MapPath("/scripts", scriptsBuilder => scriptsBuilder.UseFileServer("scripts"))
                 .MapPath("/site", siteBuilder => siteBuilder.UseNancy(sampleBootstrapper))
                 .MapHubs()
                 .UseTestPage();
