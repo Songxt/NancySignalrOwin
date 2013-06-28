@@ -1,5 +1,6 @@
-Dublin Alt.Net Owin and Katana
+Nancy + SignalR on OWIN
 =========
+_(Previously called 'Dublin Alt.Net Owin and Katana')_
 
 This repository contains the source code used in the presentation. Disclaimer: it is not an example of a well architected application, but rather demonstrates some of the key areas in building an OWIN compliant application.
 
