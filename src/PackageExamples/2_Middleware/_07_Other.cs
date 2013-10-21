@@ -9,8 +9,8 @@ namespace OwinKatanaDublinAltNet
         public void Configuration(IAppBuilder builder)
         {
             builder
-                .UseStaticCompression()
-                .UseDiagnosticsPage("_diag");
+                .UseStaticCompression();
+               // .UseDiagnosticsPage("_diag");
         }
     }
 }

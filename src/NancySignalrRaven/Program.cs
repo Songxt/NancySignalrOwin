@@ -1,6 +1,7 @@
 ﻿namespace SampleApp
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Owin.Hosting;
     using Microsoft.Owin.Hosting.Services;
     using Raven.Client;
@@ -12,8 +13,7 @@
         {
             using (IDocumentStore documentStore = new EmbeddableDocumentStore {RunInMemory = true}.Initialize())
             {
-                IServiceProvider serviceProvider = DefaultServices.Create(p => p.AddInstance<IDocumentStore>(documentStore));
-                using (WebApplication.Start<Startup>(serviceProvider, 2020))
+                using (WebApp.Start("http://+:2020", app => new Startup(documentStore).Configuration(app)))
                 {
                     Console.WriteLine("Started on port 2020");
                     Console.ReadKey();

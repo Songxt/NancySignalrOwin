@@ -4,6 +4,7 @@ namespace SampleApp
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNet.SignalR;
+    using Microsoft.Owin.Diagnostics;
     using Owin;
     using Raven.Client;
 
@@ -30,7 +31,7 @@ namespace SampleApp
             builder
                 .MapPath("/fault",
                          faultBuilder => faultBuilder
-                            .UseShowExceptions()
+                            .UseErrorPage(new ErrorPageOptions { ShowExceptionDetails = true })
                             .UseHandler((request, response) => { throw new Exception("oops!"); }))
                 .MapPath("/files",
                          siteBuilder => siteBuilder
@@ -38,9 +39,9 @@ namespace SampleApp
                             .UseDenyAnonymous()
                             .UseDirectoryBrowser(@"c:\"))
                 .MapPath("/scripts", scriptsBuilder => scriptsBuilder.UseFileServer("scripts"))
-                .MapPath("/site", siteBuilder => siteBuilder.UseNancy(sampleBootstrapper))
-                .MapHubs()
-                .UseTestPage();
+                .MapPath("/site", siteBuilder => siteBuilder.UseNancy(cfg => cfg.Bootstrapper = sampleBootstrapper))
+                .MapSignalR()
+                .UseWelcomePage();
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     using System;
     using Microsoft.Owin.Hosting;
-    using Microsoft.Owin.Hosting.Services;
     using Owin;
 
+    // As of Katana v2.0, Dependency injection support for Startups are not supported
     public class _03_DependencyInjection
     {
         public interface IMyService
@@ -39,10 +39,7 @@
         {
             public static void Main()
             {
-                IServiceProvider serviceProvider = DefaultServices
-                    .Create(defaultServicesProvider => 
-                        defaultServicesProvider.AddInstance<IMyService>(new MyService()));
-                using (WebApplication.Start(services: serviceProvider))
+                using (WebApp.Start("http://+:8080", app => new Startup(new MyService()).Configuration(app))) 
                 {
                     Console.ReadLine();
                 }
