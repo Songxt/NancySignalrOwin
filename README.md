@@ -4,10 +4,8 @@ _(Previously called 'Dublin Alt.Net Owin and Katana')_
 
 This repository contains the source code used in the presentation. Disclaimer: it is not an example of a well architected application, but rather demonstrates some of the key areas in building an OWIN compliant application.
 
-There are 4 projects:
+There are 2 projects:
 
-  - KatanaConsoleApplication1.csproj and KatanaWebApplications1.csproj are examples of the project templates installed when you install the [Katana.vsix] visual studio extension. They demonstrate the minimum required to run an owin application self-hosted (HttpListener) or on asp.net (SystemWeb)
- 
   - PackageExamples.csproj demonstrates various Owin.* and Microsoft.Owin.* packages in various Startup configurations. Also contains some sample tests
 
   - NancySignalrRaven.csproj is an example application that combines... you guessed it... Nancy, SignalrR and RavenDB, as well as various middleware and dependency injection.
