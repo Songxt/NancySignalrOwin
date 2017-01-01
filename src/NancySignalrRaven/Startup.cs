@@ -1,7 +1,6 @@
 namespace SampleApp
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNet.SignalR;
     using Microsoft.Owin.Diagnostics;
@@ -20,7 +19,12 @@ namespace SampleApp
         public void Configuration(IAppBuilder builder)
         {
             // Configure SignalR DI
-            GlobalHost.DependencyResolver.Register(typeof (IDocumentStore), () => _documentStore);
+            var resolver = new DefaultDependencyResolver();
+            resolver.Register(typeof (IDocumentStore), () => _documentStore);
+            var hubConfig = new HubConfiguration
+            {
+                Resolver = resolver
+            };
 
             // Nancy DI container is configured in its bootstrapper
             var sampleBootstrapper = new SampleBootstrapper(_documentStore);
@@ -40,7 +44,7 @@ namespace SampleApp
                             .UseDirectoryBrowser(@"c:\"))
                 .MapPath("/scripts", scriptsBuilder => scriptsBuilder.UseFileServer("scripts"))
                 .MapPath("/site", siteBuilder => siteBuilder.UseNancy(cfg => cfg.Bootstrapper = sampleBootstrapper))
-                .MapSignalR()
+                .MapSignalR(hubConfig)
                 .UseWelcomePage();
         }
     }
