@@ -1,4 +1,4 @@
-﻿namespace OwinKatanaDublinAltNet
+﻿namespace PackageExamples._1_StartupBasics
 {
     using System.Collections.Generic;
     using System.IO;

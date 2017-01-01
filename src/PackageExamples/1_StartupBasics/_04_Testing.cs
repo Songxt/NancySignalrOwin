@@ -1,4 +1,4 @@
-﻿namespace OwinKatanaDublinAltNet
+﻿namespace PackageExamples._1_StartupBasics
 {
     using System.Net;
     using System.Net.Http;
@@ -14,7 +14,11 @@
         {
             public void Configuration(IAppBuilder builder)
             {
-                builder.UseHandler((request, response) => response.StatusCode = 404);
+                builder.Use((context, next) =>
+                {
+                    context.Response.StatusCode = 404;
+                    return Task.FromResult(0);
+                });
             }
         }
 

@@ -6,11 +6,17 @@ namespace SampleApp
 
     public class Chat : Hub
     {
+        private readonly IDocumentStore _documentStore;
+
+        public Chat(IDocumentStore documentStore)
+        {
+            _documentStore = documentStore;
+        }
+
         public void Send(string message)
         {
-            var documentStore = GlobalHost.DependencyResolver.Resolve<IDocumentStore>();
             Clients.All.addMessage(message);
-            using (IDocumentSession session = documentStore.OpenSession())
+            using (IDocumentSession session = _documentStore.OpenSession())
             {
                 session.Store(new ChatLogDocument {Created = DateTime.UtcNow, Message = message});
                 session.SaveChanges();

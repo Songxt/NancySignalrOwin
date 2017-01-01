@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OwinKatanaDublinAltNet
+﻿namespace PackageExamples.Temp
 {
-    using AppFunc = Func<IDictionary<string, object>, Task>;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
     public class MyOwinMiddleware
     {

@@ -1,9 +1,7 @@
 ﻿namespace SampleApp
 {
     using System;
-    using System.Collections.Generic;
     using Microsoft.Owin.Hosting;
-    using Microsoft.Owin.Hosting.Services;
     using Raven.Client;
     using Raven.Client.Embedded;
 

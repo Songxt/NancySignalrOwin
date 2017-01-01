@@ -1,6 +1,6 @@
-namespace OwinKatanaDublinAltNet
+namespace PackageExamples._2_Middleware
 {
-    using Microsoft.Owin.Diagnostics;
+    using System.Threading.Tasks;
     using Owin;
 
     public class _06_MappingRouting
@@ -10,9 +10,13 @@ namespace OwinKatanaDublinAltNet
         public void Configuration(IAppBuilder builder)
         {
             builder
-                .MapPath("/api", b => b.UseHandler((request, response) => response.StatusCode = 302))
-                .MapPath("/admin", b => { /* etc */})
-                .MapPredicate(env => true, b => { /* etc */});
+                .Map("/api", b => b.Run(context=>
+                {
+                    context.Response.StatusCode = 302;
+                    return Task.FromResult(0);
+                }))
+                .Map("/admin", b => { /* etc */})
+                .MapWhen(env => true, b => { /* etc */});
         }
     }
 }

@@ -1,11 +1,11 @@
-namespace OwinKatanaDublinAltNet
+namespace PackageExamples._2_Middleware
 {
     using System;
     using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
+    using Microsoft.Owin;
     using Owin;
-    using Owin.Types;
 
     public class _09_CustomMiddleware
     {
@@ -13,9 +13,13 @@ namespace OwinKatanaDublinAltNet
         {
             public void Configuration(IAppBuilder builder)
             {
-                builder.MapPath("/admin", adminBuilder => adminBuilder
+                builder.Map("/admin", adminBuilder => adminBuilder
                                             .DenyNonLocalRequests()
-                                            .UseHandler((request, response) => response.Write("You're in.")));
+                                            .Run(context =>
+                    {
+                        context.Response.Write("You're in.");
+                        return Task.FromResult(0);
+                    }));
             }
         }
 
@@ -30,11 +34,10 @@ namespace OwinKatanaDublinAltNet
 
             public Task Invoke(IDictionary<string, object> env)
             {
-                var request = new OwinRequest(env);
-                var response = new OwinResponse(env);
-                if (!request.IsLocal)
+                var context = new OwinContext(env);
+                if (!Equals(IPAddress.Parse(context.Request.RemoteIpAddress), IPAddress.Loopback))
                 {
-                    response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+                    context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
                     return Task.FromResult(0);
                 }
                 return _next(env);
@@ -46,7 +49,7 @@ namespace OwinKatanaDublinAltNet
     {
         public static IAppBuilder DenyNonLocalRequests(this IAppBuilder appBuilder)
         {
-            return appBuilder.UseType<_09_CustomMiddleware.DenyNonLocalRequestsMiddleware>();
+            return appBuilder.Use<_09_CustomMiddleware.DenyNonLocalRequestsMiddleware>();
         }
     }
 }

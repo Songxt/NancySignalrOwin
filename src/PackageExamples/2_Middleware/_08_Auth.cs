@@ -1,6 +1,5 @@
-namespace OwinKatanaDublinAltNet
+namespace PackageExamples._2_Middleware
 {
-    using System.Threading.Tasks;
     using Owin;
 
     public class _08_Auth
@@ -11,7 +10,9 @@ namespace OwinKatanaDublinAltNet
         {
             public void Configuration(IAppBuilder builder)
             {
-                builder.UseBasicAuth((username, password) => Task.FromResult(false));
+                //.UseBasicAuth((username, password) => Task.FromResult(false));
+                // Package no longer available
+           
             }
         }
     }

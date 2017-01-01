@@ -1,4 +1,4 @@
-﻿namespace OwinKatanaDublinAltNet
+﻿namespace PackageExamples._1_StartupBasics
 {
     using Owin;
 
@@ -9,7 +9,7 @@
         {
             public void Configuration(IAppBuilder builder)
             {
-                builder.UseHandlerAsync((request, response) => response.WriteAsync("Sup"));
+                builder.Use((context, next) => context.Response.WriteAsync("Sup"));
             }
         }
 
@@ -17,11 +17,12 @@
         {
             public void Configuration(IAppBuilder builder)
             {
-                builder.UseHandler((request, response) =>
+                builder.Use((context, next) =>
                                        {
                                            // write headers first!
-                                           response.StatusCode = 200; 
-                                           response.Write("Sup");
+                                           context.Response.StatusCode = 200; 
+                                           context.Response.Write("Sup");
+                                           return next();
                                        });
             }
         }

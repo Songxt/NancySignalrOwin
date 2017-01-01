@@ -1,4 +1,4 @@
-﻿namespace OwinKatanaDublinAltNet
+﻿namespace PackageExamples._1_StartupBasics
 {
     using System;
     using Microsoft.Owin.Hosting;
@@ -31,7 +31,7 @@
 
             public void Configuration(IAppBuilder builder)
             {
-                builder.UseHandler((request, response) => response.Write(_myService.GetFoo()));
+                builder.Use((context, next) => context.Response.WriteAsync(_myService.GetFoo()));
             }
         }
 

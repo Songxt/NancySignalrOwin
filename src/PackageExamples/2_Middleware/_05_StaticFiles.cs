@@ -1,4 +1,4 @@
-namespace OwinKatanaDublinAltNet
+namespace PackageExamples._2_Middleware
 {
     using Owin;
 
